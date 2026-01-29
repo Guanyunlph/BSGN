@@ -1,7 +1,7 @@
 {
  "seed": 0,
  "fold": 10,
- "model": "Ablation1",
+ "model": "BSGN",
  "network_id": 999,
  "data": "camcan-movie",
  "d_subj_num": 563,
