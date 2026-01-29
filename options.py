@@ -11,7 +11,7 @@ class Options(object):
         self.parser.add_argument('--seed', type=int, default=0)
         self.parser.add_argument('--fold', type=int, default=10)
         # basic config       
-        self.parser.add_argument('--model', type=str, default='Remove3') #BSGN  Ablation6  BSGN
+        self.parser.add_argument('--model', type=str, default='BSGN') #BSGN  Ablation6  BSGN
 
         self.parser.add_argument('--network_id', type=int, default=999)
 
