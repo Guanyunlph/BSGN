@@ -24,16 +24,7 @@ warnings.filterwarnings('ignore')
 import logging
 logger = logging.getLogger('__main__')
 
-from models import (
-    BSGN,
-    Ablation1,
-    Ablation2,
-    Remove1,
-    Remove2,
-    Remove3,
-    Base1,
-    Base2
-)
+from models import BSGN
 
 
 class Exp_Main(Exp_Basic):
@@ -46,14 +37,6 @@ class Exp_Main(Exp_Basic):
     def _build_model(self):
         model_dict = {
             "BSGN":BSGN,
-            'Ablation1':Ablation1,
-            'Ablation2':Ablation2,
-            'Remove1':Remove1,
-            'Remove2':Remove2,
-            'Remove3':Remove3,
-            'Base1':Base1,
-            'Base2':Base2,
-
         }
         model = model_dict[self.args.model].Model(self.args).float()
 
