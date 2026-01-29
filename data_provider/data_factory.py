@@ -1,0 +1,64 @@
+from data_provider.data_loader import Dataset_fMRI
+from torch.utils.data import DataLoader
+import logging
+logger = logging.getLogger('__main__')
+
+
+def data_provider(args, shuffle_ix,train_index,test_index,flag):
+    
+    
+    Data = Dataset_fMRI
+
+    if args.data =='camcan-rest':
+        data_root = '/data/gyun/A_data/CamCan-rest-timeSeries-FC-label.mat'
+    elif args.data =='camcan-movie':
+        data_root = '/data/gyun/A_data/CamCan-movie-timeSeries-FC-label.mat'
+    elif args.data =='nki':
+        data_root = '/data/gyun/A_data/NKI-rest-timeSeries-FC-label.mat'
+    #
+    elif args.data =='adhd':
+        data_root = '/data/gyun/A_data/ADHD_ts_label.mat' 
+    elif args.data =='cobre':
+        data_root = '/data/gyun/A_data/COBRE_ts_label.mat' 
+    elif args.data =='adni':
+        data_root = '/data/gyun/A_data/ADNI_ts_label.mat'
+    elif args.data =='abide2':
+        data_root = '/data/gyun/A_data/ABIDE2_ts_label.mat' 
+    elif args.data =='abide1':
+        data_root = '/data/gyun/A_data/ABIDE1_ts_label.mat' 
+
+    if flag == 'test':
+        shuffle_flag = False
+        drop_last = False  #  保留 最后的批次
+        batch_size = args.batch_size
+    elif flag == 'val':
+        shuffle_flag = False
+        drop_last = False
+        batch_size = args.batch_size
+    else:
+        shuffle_flag = True
+        drop_last = False
+        batch_size = args.batch_size
+
+    data_set = Data(
+        root_path=data_root,
+        data=args.data,
+        shuffle_ix= shuffle_ix,
+        train_index= train_index,
+        test_index= test_index,
+        network_id = args.network_id,
+        flag=flag
+    )
+
+    logger.info("%s %d",flag, len(data_set))
+    
+    data_loader = DataLoader(
+        data_set,
+        batch_size=batch_size,
+        shuffle=shuffle_flag,
+        num_workers=args.num_workers,
+        drop_last=drop_last)
+    
+    return data_set, data_loader
+
+
