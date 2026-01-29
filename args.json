@@ -28,6 +28,5 @@
  "use_gpu": true,
  "gpu": 0,
  "use_multi_gpu": false,
- "devices": "0,1,2,3",
- "checkpoints": "./result8//camcan-movie_Ablation1_D8_K1N5_K2N3_K3N9_K4N3_L5/checkpoints"
+ "devices": "0,1,2,3"
 }
