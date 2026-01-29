@@ -45,20 +45,6 @@ class Options(object):
         self.parser.add_argument('--d_model', type=int, default=16)  # 16
         self.parser.add_argument('--head', type=int, default=4)  # 4
 
-
-        # self.parser.add_argument('--embed', type=str, default='fixed', help='time features encoding, options:[timeF, fixed, learned]')
-        # self.parser.add_argument('--freq', type=str, default='s',
-        #                 help='freq for time features encoding, options:[s:secondly, t:minutely, h:hourly, d:daily, '
-        #                      'b:business days, w:weekly, m:monthly], you can also use more detailed freq like 15min or 3h')
-        # self.parser.add_argument('--e_layers', type=int, default=3, help='num of encoder layers  (N)') # 3
-        # self.parser.add_argument('--output_attention', action='store_true', help='whether to output attention in ecoder')
-        # self.parser.add_argument('--factor', type=int, default=1, help='attn factor')
-        # self.parser.add_argument('--activation', type=str, default='gelu', help='activation')
-        # self.parser.add_argument('--n_heads', type=int, default=4, help='num of heads, no use for WITRAN') 
-        # self.parser.add_argument('--d_ff', type=int, default=64, help='dimension of fcn, no use for WITRAN') # 4* d_model 
-
-
-
     
         self.parser.add_argument('--dropout', type=float, default=0.2, help='dropout')
         
@@ -79,17 +65,6 @@ class Options(object):
         self.parser.add_argument('--use_multi_gpu', action='store_true', help='use multiple gpus', default=False)
         self.parser.add_argument('--devices', type=str, default='0,1,2,3', help='device ids of multile gpus')
 
-
-        # others
-        # self.parser.add_argument('--d_model', type=int, default=128, help='dimension of model hidden states (d_model)')
-        # self.parser.add_argument('--n_heads', type=int, default=4, help='num of heads, no use for WITRAN') 
-        # self.parser.add_argument('--e_layers', type=int, default=1, help='num of encoder layers  (N)') # 3
-        # self.parser.add_argument('--d_layers', type=int, default=3, help='num of decoder layers, no use for WITRAN') #  
-        # self.parser.add_argument('--d_ff', type=int, default=512, help='dimension of fcn, no use for WITRAN') # 4* d_model 
-
-        # # For TimesNet
-        # self.parser.add_argument('--top_k', type=int, default=5, help='for TimesBlock')
-        # self.parser.add_argument('--num_kernels', type=int, default=6, help='for Inception')
 
 
     def parse(self):
